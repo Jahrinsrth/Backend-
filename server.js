@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require('body-parser')
 const app = express();
+const PORT = process.env.PORT || 4000;
 
 let Advertisement = require("./advertisementSchema");
 
@@ -198,7 +199,7 @@ app.get('/retriewSingle/recordsBC', function (req, res) {
 // create();
 
 
-app.listen(4000, function () {
+app.listen(PORT , function () {
   console.log("listeneing on 4000");
 });
 
