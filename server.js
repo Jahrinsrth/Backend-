@@ -53,51 +53,53 @@ app.post('/add', function (req, res) {
   //const nic = "962244667V";
   //3abcdef2ghijk3lm
   const deviceId = req.body.deviceId
+  res.json({ 'owner': req.body});
+  
   // const deviceId = "3abcdef2ghijk3lm";
 
   //  sending transection to blockchain through mobile app
-  async function load() {
+  // async function load() {
 
-    const accounts = await web3.eth.getAccounts();
-    const totalCount = await owner.methods.OwnerCount().call();
+  //   const accounts = await web3.eth.getAccounts();
+  //   const totalCount = await owner.methods.OwnerCount().call();
 
-    const owners = [];
-    for (var i = 1; i <= totalCount; i++) {
+  //   const owners = [];
+  //   for (var i = 1; i <= totalCount; i++) {
 
-      const ownersf = await owner.methods.owners(i).call();
+  //     const ownersf = await owner.methods.owners(i).call();
 
-      console.log(ownersf.deviceId);
+  //     console.log(ownersf.deviceId);
 
-      const ownerObj = {
-        deviceId: ownersf.deviceId,
-        nic: ownersf.nic
-      }
+  //     const ownerObj = {
+  //       deviceId: ownersf.deviceId,
+  //       nic: ownersf.nic
+  //     }
 
-      owners.push(ownerObj);
-    };
+  //     owners.push(ownerObj);
+  //   };
 
 
-    console.log(owners);
-    const filteredArray = owners.filter(d => d.nic == nic && d.deviceId == deviceId);
-    console.log('filter_Arr', filteredArray);
+  //   console.log(owners);
+  //   const filteredArray = owners.filter(d => d.nic == nic && d.deviceId == deviceId);
+  //   console.log('filter_Arr', filteredArray);
 
-    if (filteredArray.length !== 0) {
+  //   if (filteredArray.length !== 0) {
 
-      // console.log("Record already exsist");
-    }
-    else {
-      return await Promise.resolve(accounts[0]);
-      //console.log("No previous records found");
-    }
-    // console.log(accounts[0]);
-  };
+  //     // console.log("Record already exsist");
+  //   }
+  //   else {
+  //     return await Promise.resolve(accounts[0]);
+  //     //console.log("No previous records found");
+  //   }
+  //   // console.log(accounts[0]);
+  // };
 
-  load().then((account) => {
-    // console.log(account);
-    owner.methods.createOwner(name, deviceId, nic).send({ from: account, gas: 3000000 });
-  }).catch(error => {
-    console.log("Error : address not found due to duplicate value - " + error);
-  })
+  // load().then((account) => {
+  //   // console.log(account);
+  //   owner.methods.createOwner(name, deviceId, nic).send({ from: account, gas: 3000000 });
+  // }).catch(error => {
+  //   console.log("Error : address not found due to duplicate value - " + error);
+  // })
 
 
 })
