@@ -27,7 +27,7 @@ const Owner = require("./build/contracts/Owner.json");
 //const { create } = require("./advertisementSchema");
 
 //  connecting to Ganache personal Blockchain(Ethereum Blockchain)
-const web3 = new Web3("HTTP://192.168.8.100:7545");
+const web3 = new Web3("HTTP://127.0.0.1:7545");
 
 //  ----------------------------------------
 
